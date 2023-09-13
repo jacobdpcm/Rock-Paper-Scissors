@@ -15,32 +15,34 @@ function getComputerChoice() {
 //Set up every possible outcome for a round
 function playRound(playerScore, computerScore) {
     const computerSelection = getComputerChoice();
-
-    //Check for correct user input
-    let playerSelection = prompt("Choose rock, paper, or scissor:").toLowerCase()
-    while(playerSelection !== "rock" && playerSelection !== "paper" && playerSelection !== "scissor") {
-        playerSelection = prompt("The only available options to enter are rock, paper, or scissor:")
-    }
+    const round = document.querySelector('.round')
 
     if (playerSelection === computerSelection) {
+        round.textContent = "It's a tie";
         console.log("It's a tie")
         return "tie";
     } else if (playerSelection === "rock" && computerSelection === "scissor") {
+        round.textContent = "You win! Rock beats scissor";
         console.log("You win! rock beats scissor")
          return 1;
     } else if (playerSelection === "rock" && computerSelection === "paper") {
+        round.textContent = "You lose! Paper beats rock";
         console.log("You lose! paper beats rock")
         return 0;
     } else if (playerSelection === "scissor" && computerSelection === "rock") {
+        round.textContent = "You lose! Rock beats scissor";
         console.log("You lose! rock beats scissor")
         return 0;
     } else if (playerSelection === "scissor" && computerSelection === "paper") {
+        round.textContent = "You win! Scissor beats paper";
         console.log("You win! scissor beats paper")
         return 1;
     } else if (playerSelection === "paper" && computerSelection === "scissor") {
+        round.textContent = "You lose! Scissor beats paper";
         console.log("You lose! scissor beats paper")
         return 0;
     } else if (playerSelection === "paper" && computerSelection === "rock") {
+        round.textContent = "You win! Paper beats rock";
         console.log("You win! paper beats rock")
         return 1;
     }
@@ -71,7 +73,54 @@ function game() {
     }
 }
 
-game()
+let playerScore = 0;
+let computerScore = 0;
+let playerSelection;
+const btnRock = document.querySelector('.rock')
+const btnPaper = document.querySelector('.paper')
+const btnScissor = document.querySelector('.scissor')
+const score = document.querySelector('.game')
+
+let x = null
+
+btnRock.addEventListener('click', function(){
+    playerSelection = 'rock';
+    x = playRound(playerScore, computerScore);
+    if (x === 0) {
+        ++computerScore
+    } else if (x === 1) {
+        ++playerScore
+    }
+    score.textContent = "The score is Player: " + playerScore + ", " + "Computer: " + computerScore;
+})
+btnPaper.addEventListener('click', function(){
+    playerSelection = 'paper';
+    x = playRound(playerScore, computerScore);
+    if (x === 0) {
+        ++computerScore
+    } else if (x === 1) {
+        ++playerScore
+    }
+    score.textContent = "The score is Player: " + playerScore + ", " + "Computer: " + computerScore;
+})
+btnScissor.addEventListener('click', function(){
+    playerSelection = 'scissor';
+    x = playRound(playerScore, computerScore);
+    if (x === 0) {
+        ++computerScore
+    } else if (x === 1) {
+        ++playerScore
+    }
+    score.textContent = "The score is Player: " + playerScore + ", " + "Computer: " + computerScore;
+})
+
+
+
+
+
+
+
+
 
  
 
