@@ -67,7 +67,7 @@ function playRound(playerScore, computerScore) {
     }
 }
 
-function game() {
+/*function game() {
     let playerScore = 0;
     let computerScore = 0;
     
@@ -90,7 +90,7 @@ function game() {
     } else if (playerScore === computerScore) {
         console.log("The match was a tie " + playerScore + "-" + computerScore)
     }
-}
+}*/
 
 let playerScore = 0;
 let computerScore = 0;
@@ -99,41 +99,70 @@ const btnRock = document.querySelector('.rock')
 const btnPaper = document.querySelector('.paper')
 const btnScissor = document.querySelector('.scissor')
 const score = document.querySelector('.game')
-
+const final = document.querySelector('.final')
 
 let x = null
+let y = 1
 
 //User choice inputs
-btnRock.addEventListener('click', function(){
-    playerSelection = 'rock';
-    x = playRound(playerScore, computerScore);
-    if (x === 0) {
-        ++computerScore
-    } else if (x === 1) {
-        ++playerScore
-    }
-    score.textContent = "The score is Player: " + playerScore + ", " + "Computer: " + computerScore;
-})
-btnPaper.addEventListener('click', function(){
-    playerSelection = 'paper';
-    x = playRound(playerScore, computerScore);
-    if (x === 0) {
-        ++computerScore
-    } else if (x === 1) {
-        ++playerScore
-    }
-    score.textContent = "The score is Player: " + playerScore + ", " + "Computer: " + computerScore;
-})
-btnScissor.addEventListener('click', function(){
-    playerSelection = 'scissor';
-    x = playRound(playerScore, computerScore);
-    if (x === 0) {
-        ++computerScore
-    } else if (x === 1) {
-        ++playerScore
-    }
-    score.textContent = "The score is Player: " + playerScore + ", " + "Computer: " + computerScore;
-})
+    btnRock.addEventListener('click', function(){
+        playerSelection = 'rock';
+        x = playRound(playerScore, computerScore);
+        if (x === 0) {
+            ++computerScore
+        } else if (x === 1) {
+            ++playerScore
+        }
+        score.textContent = "The score is Player: " + playerScore + ", " + "Computer: " + computerScore;
+        if(playerScore === 5) {
+            final.textContent = 'Enjoy this feeling of pride and acomplishment over defeating a world class AI.';
+        }
+    
+        if(computerScore === 5) {
+            final.textContent = 'The merciless of the AI was too much for you. May God have mercy on your soul.';
+        }
+    
+    })
+    btnPaper.addEventListener('click', function(){
+        playerSelection = 'paper';
+        x = playRound(playerScore, computerScore);
+        if (x === 0) {
+            ++computerScore
+        } else if (x === 1) {
+            ++playerScore
+        }
+        score.textContent = "The score is Player: " + playerScore + ", " + "Computer: " + computerScore;
+        if(playerScore === 5) {
+            final.textContent = 'Enjoy this feeling of pride and acomplishment over defeating a world class AI.';
+        }
+    
+        if(computerScore === 5) {
+            final.textContent = 'The merciless of the AI was too much for you. May God have mercy on your soul.';
+        }
+    
+    })
+    btnScissor.addEventListener('click', function(){
+        playerSelection = 'scissor';
+        x = playRound(playerScore, computerScore);
+        if (x === 0) {
+            ++computerScore
+        } else if (x === 1) {
+            ++playerScore
+        }
+        score.textContent = "The score is Player: " + playerScore + ", " + "Computer: " + computerScore;
+        if(playerScore === 5) {
+            final.textContent = 'Enjoy this feeling of pride and acomplishment over defeating a world class AI.';
+        }
+    
+        if(computerScore === 5) {
+            final.textContent = 'The merciless of the AI was too much for you. May God have mercy on your soul.';
+        }
+    
+    })
+
+
+
+
 
 
 
