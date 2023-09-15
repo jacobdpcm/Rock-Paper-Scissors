@@ -13,10 +13,30 @@ function getComputerChoice() {
 }
 
 //Set up computer choise
+//Set up computer choise
 function playRound(playerScore, computerScore) {
     const computerSelection = getComputerChoice();
     const round = document.querySelector('.round')
 
+//Set up Displaying Computer's choice
+    const comChoice = document.createElement('img')
+    comChoice.classList.add('comimage') 
+    comChoice.src = "./images/computer.jpg"
+    const comrock = document.querySelector('.comrock')
+    const compaper = document.querySelector('.compaper')
+    const comscissor = document.querySelector('.comscissor')
+    comrock.innerHTML = ''
+    compaper.innerHTML = ''
+    comscissor.innerHTML = ''
+    if(computerSelection === 'rock'){
+        comrock.appendChild(comChoice);
+    } else if(computerSelection === 'paper'){
+        compaper.appendChild(comChoice)
+    } else if(computerSelection === 'scissor'){
+        comscissor.appendChild(comChoice)
+    }
+
+//Set up every possible outcome for a round
 //Set up Displaying Computer's choice
     const comChoice = document.createElement('img')
     comChoice.classList.add('comimage') 
