@@ -18,16 +18,16 @@ function playRound(playerScore, computerScore) {
     const computerSelection = getComputerChoice();
     const round = document.querySelector('.round')
 
-//Set up Displaying Computer's choice
+    //Set up Displaying Computer's choice
     const comChoice = document.createElement('img')
     comChoice.classList.add('comimage') 
-    comChoice.src = "./images/computer.jpg"
+    comChoice.src = "./images/computer.jpg";
     const comrock = document.querySelector('.comrock')
     const compaper = document.querySelector('.compaper')
     const comscissor = document.querySelector('.comscissor')
-    comrock.innerHTML = ''
-    compaper.innerHTML = ''
-    comscissor.innerHTML = ''
+    comrock.innerHTML = '';
+    compaper.innerHTML = '';
+    comscissor.innerHTML = '';
     if(computerSelection === 'rock'){
         comrock.appendChild(comChoice);
     } else if(computerSelection === 'paper'){
@@ -36,26 +36,7 @@ function playRound(playerScore, computerScore) {
         comscissor.appendChild(comChoice)
     }
 
-//Set up every possible outcome for a round
-//Set up Displaying Computer's choice
-    const comChoice = document.createElement('img')
-    comChoice.classList.add('comimage') 
-    comChoice.src = "./images/computer.jpg"
-    const comrock = document.querySelector('.comrock')
-    const compaper = document.querySelector('.compaper')
-    const comscissor = document.querySelector('.comscissor')
-    comrock.innerHTML = ''
-    compaper.innerHTML = ''
-    comscissor.innerHTML = ''
-    if(computerSelection === 'rock'){
-        comrock.appendChild(comChoice);
-    } else if(computerSelection === 'paper'){
-        compaper.appendChild(comChoice)
-    } else if(computerSelection === 'scissor'){
-        comscissor.appendChild(comChoice)
-    }
-
-//Set up every possible outcome for a round
+    //Set up every possible outcome for a round
     if (playerSelection === computerSelection) {
         round.textContent = "It's a tie";
         console.log("It's a tie")
@@ -87,7 +68,44 @@ function playRound(playerScore, computerScore) {
     }
 }
 
-/*function game() {
+function updateScore(){
+    if (x === 0) {
+        ++computerScore
+    } else if (x === 1) {
+        ++playerScore
+    }
+}
+
+function removeButtons(){
+    const buttons = document.querySelector('.buttons');
+    buttons.innerHTML = '';
+}
+
+function goodEnding(){
+    const finalImage = document.createElement('img')
+    const buttons = document.querySelector('.buttons');
+    finalImage.classList.add('finalimage') 
+    finalImage.src = "./images/computerLoss.jpg";
+    finalImage.setAttribute('style', 'height: 200px; width: auto;');
+    buttons.appendChild(finalImage);
+    const good = document.querySelector('.final');
+    good.setAttribute('style', 'color: green;');
+    final.textContent = 'Enjoy this feeling of pride and acomplishment over defeating a world class AI.';
+}
+
+function badEnding(){
+    const finalImage = document.createElement('img');
+    const buttons = document.querySelector('.buttons');
+    finalImage.classList.add('finalimage') ;
+    finalImage.src = "./images/computer.jpg";
+    finalImage.setAttribute('style', 'height: 200px; width: auto;');
+    buttons.appendChild(finalImage);
+    const bad = document.querySelector('.final');
+    bad.setAttribute('style', 'color: red;');
+    final.textContent = 'The mercilessness of the AI was too much for you. May God have mercy on your soul.';
+}
+/* This was from the original version in console.
+function game() {
     let playerScore = 0;
     let computerScore = 0;
     
@@ -128,54 +146,48 @@ let y = 1
     btnRock.addEventListener('click', function(){
         playerSelection = 'rock';
         x = playRound(playerScore, computerScore);
-        if (x === 0) {
-            ++computerScore
-        } else if (x === 1) {
-            ++playerScore
-        }
+        updateScore();
         score.textContent = "The score is Player: " + playerScore + ", " + "Computer: " + computerScore;
+
         if(playerScore === 5) {
-            final.textContent = 'Enjoy this feeling of pride and acomplishment over defeating a world class AI.';
+            removeButtons();
+            goodEnding();
         }
-    
         if(computerScore === 5) {
-            final.textContent = 'The merciless of the AI was too much for you. May God have mercy on your soul.';
+            removeButtons();
+            badEnding();
         }
     
     })
     btnPaper.addEventListener('click', function(){
         playerSelection = 'paper';
         x = playRound(playerScore, computerScore);
-        if (x === 0) {
-            ++computerScore
-        } else if (x === 1) {
-            ++playerScore
-        }
+        updateScore();
         score.textContent = "The score is Player: " + playerScore + ", " + "Computer: " + computerScore;
+
         if(playerScore === 5) {
-            final.textContent = 'Enjoy this feeling of pride and acomplishment over defeating a world class AI.';
+            removeButtons();
+            goodEnding();
         }
-    
         if(computerScore === 5) {
-            final.textContent = 'The merciless of the AI was too much for you. May God have mercy on your soul.';
+            removeButtons();
+            badEnding();
         }
     
     })
     btnScissor.addEventListener('click', function(){
         playerSelection = 'scissor';
         x = playRound(playerScore, computerScore);
-        if (x === 0) {
-            ++computerScore
-        } else if (x === 1) {
-            ++playerScore
-        }
+        updateScore();
         score.textContent = "The score is Player: " + playerScore + ", " + "Computer: " + computerScore;
+
         if(playerScore === 5) {
-            final.textContent = 'Enjoy this feeling of pride and acomplishment over defeating a world class AI.';
+            removeButtons();
+            goodEnding();
         }
-    
         if(computerScore === 5) {
-            final.textContent = 'The merciless of the AI was too much for you. May God have mercy on your soul.';
+            removeButtons();
+            badEnding();
         }
     
     })
